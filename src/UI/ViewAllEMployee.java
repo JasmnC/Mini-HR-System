@@ -397,7 +397,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row first.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        //abbbccc
+        //abbbcccdd
         
         
     }//GEN-LAST:event_btnDetailsActionPerformed
