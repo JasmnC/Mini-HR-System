@@ -353,18 +353,19 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblEmployee.getSelectedRow();
         
-        if (selectedRow >= 0) {
-            DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
-            Employee select = (Employee) model.getValueAt(selectedRow, 0);
-            
-            employeeDirectory.delete(select);
-            JOptionPane.showMessageDialog(this, "Selected person has been delete.", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            
-        } else {
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row first.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+        
+        DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
+        Employee select = (Employee) model.getValueAt(selectedRow, 0);
+            
+        employeeDirectory.delete(select);
+        JOptionPane.showMessageDialog(this, "Selected person has been delete.", "Warning", JOptionPane.WARNING_MESSAGE);
 
+        populateTable();
+            
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -396,6 +397,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row first.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+        //abbb
         
         
     }//GEN-LAST:event_btnDetailsActionPerformed
@@ -480,7 +482,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         
         for(Employee e:employeeDirectory.getEmployeeDirectory()){
             Object[] row = new Object[4];
-            row[0]=e.getName();
+            row[0]=e;
             row[1]=e.getDepartment();
             row[2]=e.getId();
             row[3]=e.getEmail();
