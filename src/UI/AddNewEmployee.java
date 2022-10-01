@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UI_HR;
+package UI;
+
+import java.awt.Image;
+import java.io.File;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import model.*;
 
 /**
  *
@@ -13,8 +19,12 @@ public class AddNewEmployee extends javax.swing.JPanel {
     /**
      * Creates new form AddNewEmployee
      */
-    public AddNewEmployee() {
+    EmployeeDirectory employeeDirectory;
+    
+    public AddNewEmployee(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory=employeeDirectory;
         initComponents();
+        
     }
 
     /**
@@ -41,7 +51,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        txtPhoto = new javax.swing.JTextField();
         txtEmployeeID = new javax.swing.JTextField();
         txtLevel = new javax.swing.JTextField();
         txtStartDate = new javax.swing.JFormattedTextField();
@@ -50,103 +60,102 @@ public class AddNewEmployee extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         txtMobile = new javax.swing.JTextField();
         txtSupervisor = new javax.swing.JTextField();
-        cmbDepartment = new javax.swing.JComboBox<>();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         btnCreate = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblImage = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtDepartment = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         jLabel2.setText("Add New Employee");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Email:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 100, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 100, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Photo:");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Department:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 100, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Employee ID:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 100, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 100, -1));
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Age:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 100, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Gender:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 100, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 100, -1));
 
         jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Start Date:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 100, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 100, -1));
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Level:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 100, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 100, -1));
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Supervisor:");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 100, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, -1));
 
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Title:");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 100, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 100, -1));
 
         jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Mobile:");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 100, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 100, -1));
 
         jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Name:");
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 100, -1));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 230, 30));
-        add(txtEmployeeID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 230, 30));
-        add(txtLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 230, 30));
-        add(txtStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 230, 30));
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 230, 30));
-        add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 230, 30));
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 230, 30));
-        add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 230, 30));
-        add(txtSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 230, 30));
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
+        add(txtPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 190, 30));
+        add(txtEmployeeID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 190, 30));
+        add(txtLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 190, 30));
+        add(txtStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 190, 30));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 190, 30));
+        add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 190, 30));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 190, 30));
+        add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 190, 30));
+        add(txtSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 190, 30));
 
-        cmbDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 230, 30));
+        jRadioButton1.setText("N");
+        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 60, -1));
 
-        jRadioButton1.setText("Non-Binary");
-        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 235, -1, -1));
+        jRadioButton2.setText("M");
+        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 50, -1));
 
-        jRadioButton2.setText("Male");
-        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 235, -1, -1));
-
-        jRadioButton3.setText("Female");
-        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 235, -1, -1));
+        jRadioButton3.setText("F");
+        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 50, -1));
 
         btnCreate.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnCreate.setText("Create");
@@ -155,22 +164,90 @@ public class AddNewEmployee extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 100, 50));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 100, 50));
 
         jButton2.setText("Upload");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 160, 190));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 190, 30));
+        add(txtDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 190, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        String name = txtName.getText();
+        String department = txtPhoto.getText();
+        long id = Long.parseLong(txtEmployeeID.getText());
+        int age = Integer.parseInt(txtAge.getText());
+        //String gender = getSelectedButtonText(buttonGroupGender);                
+        String startDate = txtStartDate.getText();
+        String level = txtLevel.getText();
+        String title = txtTitle.getText();
+        String supervisor = txtSupervisor.getText();
+        String mobile = txtMobile.getText();
+        String email = txtEmail.getText();
+        ImageIcon photo = (ImageIcon)lblImage.getIcon();
+
+        Employee e= employeeDirectory.addNewEmployee();
+        
+        e.setName(name);
+        e.setDepartment(department);
+        e.setId(id);
+        e.setAge(age);
+        //e.setGender(gender);
+        e.setStartday(startDate);
+        e.setLevel(level);
+        e.setTitle(title);
+        e.setSupervisor(supervisor);
+        e.setMobile(mobile);
+        e.setEmail(email);
+        e.setImage(photo);
+        
+        JOptionPane.showMessageDialog(this, "New Employee Added");
+        
+        txtAge.setText("");
+        txtDepartment.setText("");
+        txtEmail.setText("");
+        txtEmployeeID.setText("");
+        txtLevel.setText("");
+        txtMobile.setText("");
+        txtName.setText("");
+        txtPhoto.setText("");
+        txtStartDate.setText("");
+        txtSupervisor.setText("");
+        txtTitle.setText("");
+        lblImage.setIcon(null);
+        
+
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("4 Extension Suppported", "jpg", "png", "jpeg", "gif");
+        fileChooser.setFileFilter(filter);
+        int selected = fileChooser.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            ImageIcon imIco = new ImageIcon(file.toString());
+            Image imFit = imIco.getImage();
+            Image imgFit = imFit.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+            
+            lblImage.setIcon(new ImageIcon(imgFit));
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JComboBox<String> cmbDepartment;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -188,12 +265,15 @@ public class AddNewEmployee extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmployeeID;
     private javax.swing.JTextField txtLevel;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhoto;
     private javax.swing.JFormattedTextField txtStartDate;
     private javax.swing.JTextField txtSupervisor;
     private javax.swing.JTextField txtTitle;
