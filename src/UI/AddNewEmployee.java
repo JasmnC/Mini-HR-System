@@ -51,7 +51,6 @@ public class AddNewEmployee extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtPhoto = new javax.swing.JTextField();
         txtEmployeeID = new javax.swing.JTextField();
         txtLevel = new javax.swing.JTextField();
         txtStartDate = new javax.swing.JFormattedTextField();
@@ -138,10 +137,26 @@ public class AddNewEmployee extends javax.swing.JPanel {
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
-        add(txtPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 190, 30));
+
+        txtEmployeeID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmployeeIDActionPerformed(evt);
+            }
+        });
+        txtEmployeeID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmployeeIDKeyPressed(evt);
+            }
+        });
         add(txtEmployeeID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 190, 30));
         add(txtLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 190, 30));
         add(txtStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 190, 30));
+
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAgeKeyPressed(evt);
+            }
+        });
         add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 190, 30));
         add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 190, 30));
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 190, 30));
@@ -173,15 +188,16 @@ public class AddNewEmployee extends javax.swing.JPanel {
             }
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
-        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 160, 190));
+        add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 160, 190));
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 190, 30));
         add(txtDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 190, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+        
         String name = txtName.getText();
-        String department = txtPhoto.getText();
+        String department = txtDepartment.getText();
         long id = Long.parseLong(txtEmployeeID.getText());
         int age = Integer.parseInt(txtAge.getText());
         //String gender = getSelectedButtonText(buttonGroupGender);                
@@ -192,7 +208,15 @@ public class AddNewEmployee extends javax.swing.JPanel {
         String mobile = txtMobile.getText();
         String email = txtEmail.getText();
         ImageIcon photo = (ImageIcon)lblImage.getIcon();
+        
+        if(name.equals("")||department.equals("")||(txtEmployeeID.getText()).equals("")||
+            (txtAge.getText()).equals("")||startDate.equals("")||level.equals("")||
+            title.equals("")||supervisor.equals("")||mobile.equals("")||email.equals("")){
+            
+            JOptionPane.showMessageDialog(this, "Please fill in all the blanks.");
 
+        }else{
+            
         Employee e= employeeDirectory.addNewEmployee();
         
         e.setName(name);
@@ -217,12 +241,11 @@ public class AddNewEmployee extends javax.swing.JPanel {
         txtLevel.setText("");
         txtMobile.setText("");
         txtName.setText("");
-        txtPhoto.setText("");
         txtStartDate.setText("");
         txtSupervisor.setText("");
         txtTitle.setText("");
         lblImage.setIcon(null);
-        
+        }
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -242,6 +265,30 @@ public class AddNewEmployee extends javax.swing.JPanel {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtEmployeeIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmployeeIDActionPerformed
+
+    private void txtEmployeeIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmployeeIDKeyPressed
+        // TODO add your handling code here:
+        char c  = evt.getKeyChar();
+        if(Character.isDigit(c)){
+            txtEmployeeID.setEditable(true);
+        }else{
+            txtEmployeeID.setEditable(false);            
+        }
+    }//GEN-LAST:event_txtEmployeeIDKeyPressed
+
+    private void txtAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyPressed
+        // TODO add your handling code here:
+        char c  = evt.getKeyChar();
+        if(Character.isDigit(c)){
+            txtEmployeeID.setEditable(true);
+        }else{
+            txtEmployeeID.setEditable(false);            
+        }
+    }//GEN-LAST:event_txtAgeKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -273,7 +320,6 @@ public class AddNewEmployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtLevel;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPhoto;
     private javax.swing.JFormattedTextField txtStartDate;
     private javax.swing.JTextField txtSupervisor;
     private javax.swing.JTextField txtTitle;
