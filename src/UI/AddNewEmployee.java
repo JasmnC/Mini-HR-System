@@ -5,6 +5,7 @@
 package UI;
 
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Enumeration;
 import javax.swing.*;
@@ -281,7 +282,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
     private void txtEmployeeIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmployeeIDKeyPressed
         // TODO add your handling code here:
         char c  = evt.getKeyChar();
-        if(Character.isDigit(c)){
+        if(Character.isDigit(c)||c==KeyEvent.VK_BACK_SPACE){
             txtEmployeeID.setEditable(true);
         }else{
             txtEmployeeID.setEditable(false);            
@@ -291,7 +292,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
     private void txtAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyPressed
         // TODO add your handling code here:
         char c  = evt.getKeyChar();
-        if(Character.isDigit(c)){
+        if(Character.isDigit(c)||c==KeyEvent.VK_BACK_SPACE){
             txtEmployeeID.setEditable(true);
         }else{
             txtEmployeeID.setEditable(false);            
