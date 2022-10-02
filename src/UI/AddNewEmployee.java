@@ -200,6 +200,10 @@ public class AddNewEmployee extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         
+        if(txtEmployeeID.getText().equals("")||txtAge.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please fill in all the blanks.");        
+        }else{
+        
         String name = txtName.getText();
         String department = txtDepartment.getText();
         long id = Long.parseLong(txtEmployeeID.getText());
@@ -213,8 +217,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
         String email = txtEmail.getText();
         ImageIcon photo = (ImageIcon)lblImage.getIcon();
         
-        if(name.equals("")||department.equals("")||(txtEmployeeID.getText()).equals("")||
-            (txtAge.getText()).equals("")||startDate.equals("")||level.equals("")||
+        if(name.equals("")||department.equals("")||startDate.equals("")||level.equals("")||
             title.equals("")||supervisor.equals("")||mobile.equals("")||email.equals("")){
             
             JOptionPane.showMessageDialog(this, "Please fill in all the blanks.");
@@ -250,6 +253,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
         txtTitle.setText("");
         lblImage.setIcon(null);
         }
+        }  
 
     }//GEN-LAST:event_btnCreateActionPerformed
 

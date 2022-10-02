@@ -431,6 +431,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         txtDepartment.setText("");
         txtEmail.setText("");
         txtEmployeeID.setText("");
+        txtGender.setText("");
         txtLevel.setText("");
         txtMobile.setText("");
         txtName.setText("");
