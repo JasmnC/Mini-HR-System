@@ -6,6 +6,7 @@ package UI;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.Enumeration;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.*;
@@ -163,12 +164,15 @@ public class AddNewEmployee extends javax.swing.JPanel {
         add(txtMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 190, 30));
         add(txtSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 190, 30));
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("N");
         add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 60, -1));
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("M");
         add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 50, -1));
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("F");
         add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 50, -1));
 
@@ -200,7 +204,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
         String department = txtDepartment.getText();
         long id = Long.parseLong(txtEmployeeID.getText());
         int age = Integer.parseInt(txtAge.getText());
-        //String gender = getSelectedButtonText(buttonGroupGender);                
+        String gender = getButtonGroupText(buttonGroup1);                
         String startDate = txtStartDate.getText();
         String level = txtLevel.getText();
         String title = txtTitle.getText();
@@ -223,7 +227,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
         e.setDepartment(department);
         e.setId(id);
         e.setAge(age);
-        //e.setGender(gender);
+        e.setGender(gender);
         e.setStartday(startDate);
         e.setLevel(level);
         e.setTitle(title);
@@ -324,4 +328,15 @@ public class AddNewEmployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtSupervisor;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
+
+    public String getButtonGroupText(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+        return null;
+    } 
+
 }
