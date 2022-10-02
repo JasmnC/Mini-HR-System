@@ -403,33 +403,42 @@ public class ViewAllEmployee extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        String name = txtName.getText();
-        String department = txtDepartment.getText();
-        long id = Long.parseLong(txtEmployeeID.getText());
-        int age = Integer.parseInt(txtAge.getText());
-        //String gender = getSelectedButtonText(buttonGroupGender);
-        String startDate = txtStartDate.getText();
-        String level = txtLevel.getText();
-        String title = txtTitle.getText();
-        String supervisor = txtSupervisor.getText();
-        String mobile = txtMobile.getText();
-        String email = txtEmail.getText();
-        //String photo = txtPhoto.getText();
-
-        Employee e= employeeDirectory.addNewEmployee();
-
-        e.setName(name);
-        e.setDepartment(department);
-        e.setId(id);
-        e.setAge(age);
-        //e.setGender(gender);
-        e.setStartday(startDate);
-        e.setLevel(level);
-        e.setTitle(title);
-        e.setSupervisor(supervisor);
-        e.setMobile(mobile);
-        e.setEmail(email);
-        //photo
+        
+        int selectedRow = tblEmployee.getSelectedRow();
+        
+        DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
+        Employee select = (Employee) model.getValueAt(selectedRow, 0);
+        
+        select.setName(txtName.getText());
+        select.setDepartment(txtDepartment.getText());
+        select.setId(Long.parseLong(txtEmployeeID.getText()));
+        select.setAge(Integer.parseInt(txtAge.getText()));
+        select.setGender(txtGender.getText());
+        select.setStartday(txtStartDate.getText());
+        select.setLevel(txtLevel.getText());
+        select.setTitle(txtTitle.getText());
+        select.setSupervisor(txtSupervisor.getText());
+        select.setMobile(txtMobile.getText());
+        select.setEmail(txtEmail.getText());
+        select.setImage((ImageIcon)lblImage.getIcon());
+        
+        JOptionPane.showMessageDialog(this, "Employee info updated.");
+                
+        populateTable();
+        
+        txtName.setText("");
+        txtAge.setText("");
+        txtDepartment.setText("");
+        txtEmail.setText("");
+        txtEmployeeID.setText("");
+        txtLevel.setText("");
+        txtMobile.setText("");
+        txtName.setText("");
+        txtStartDate.setText("");
+        txtSupervisor.setText("");
+        txtTitle.setText("");
+        lblImage.setIcon(null);
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
