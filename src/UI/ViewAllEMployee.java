@@ -393,7 +393,9 @@ public class ViewAllEmployee extends javax.swing.JPanel {
             txtMobile.setText(String.valueOf(select.getMobile()));
             txtEmail.setText(String.valueOf(select.getEmail()));
             //photo
-            
+            ImageIcon i = (ImageIcon)select.getImage();
+            lblImage.setIcon(i);
+
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row first.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
