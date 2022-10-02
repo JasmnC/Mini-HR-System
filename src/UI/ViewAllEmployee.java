@@ -7,6 +7,7 @@ package UI;
 import java.awt.CardLayout;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.*;
 
 /**
@@ -39,7 +40,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmployee = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         btnDetails = new javax.swing.JButton();
@@ -86,9 +87,14 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblEmployee);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
@@ -172,7 +178,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         jRadioButton3.setText("F");
 
         btnCreate.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        btnCreate.setText("Create");
+        btnCreate.setText("Update");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
@@ -257,7 +263,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
                                     .addComponent(btnDetails))
                                 .addGap(110, 110, 110))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49))))))
@@ -267,7 +273,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,9 +351,12 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -369,7 +378,13 @@ public class ViewAllEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+            String name = JOptionPane.showInputDialog("Input");
+            DefaultTableModel m = (DefaultTableModel)tblEmployee.getModel(); 
+
+            TableRowSorter<DefaultTableModel> t = new TableRowSorter<DefaultTableModel>(m);
+            tblEmployee.setRowSorter(t);
+        
+            t.setRowFilter(RowFilter.regexFilter(name.trim()));
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
@@ -392,14 +407,12 @@ public class ViewAllEmployee extends javax.swing.JPanel {
             txtSupervisor.setText(String.valueOf(select.getSupervisor()));
             txtMobile.setText(String.valueOf(select.getMobile()));
             txtEmail.setText(String.valueOf(select.getEmail()));
-            //photo
             ImageIcon i = (ImageIcon)select.getImage();
             lblImage.setIcon(i);
 
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row first.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        //abbbcccdde
         
         
     }//GEN-LAST:event_btnDetailsActionPerformed
@@ -439,6 +452,12 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        String s = txtSearch.getText().toLowerCase();
+        filter(s);
+    }//GEN-LAST:event_txtSearchKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
@@ -462,7 +481,6 @@ public class ViewAllEmployee extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblImage;
     private javax.swing.JTable tblEmployee;
     private javax.swing.JTextField txtAge;
@@ -473,6 +491,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhoto;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JFormattedTextField txtStartDate;
     private javax.swing.JTextField txtSupervisor;
     private javax.swing.JTextField txtTitle;
@@ -491,5 +510,13 @@ public class ViewAllEmployee extends javax.swing.JPanel {
             
             model.addRow(row);
         }
+    }
+    private void filter(String s){
+        DefaultTableModel m = (DefaultTableModel)tblEmployee.getModel(); 
+
+        TableRowSorter<DefaultTableModel> t = new TableRowSorter<DefaultTableModel>(m);
+        tblEmployee.setRowSorter(t);
+        
+        t.setRowFilter(RowFilter.regexFilter(s));
     }
 }
