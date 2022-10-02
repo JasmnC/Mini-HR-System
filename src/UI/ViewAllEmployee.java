@@ -364,7 +364,7 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Selected person has been delete.", "Warning", JOptionPane.WARNING_MESSAGE);
 
         populateTable();
-            
+        clear();
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -422,20 +422,8 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Employee info updated.");
                 
         populateTable();
-        
-        txtName.setText("");
-        txtAge.setText("");
-        txtDepartment.setText("");
-        txtEmail.setText("");
-        txtEmployeeID.setText("");
-        txtGender.setText("");
-        txtLevel.setText("");
-        txtMobile.setText("");
-        txtName.setText("");
-        txtStartDate.setText("");
-        txtSupervisor.setText("");
-        txtTitle.setText("");
-        lblImage.setIcon(null);
+        clear();
+
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -520,4 +508,21 @@ public class ViewAllEmployee extends javax.swing.JPanel {
         
         t.setRowFilter(RowFilter.regexFilter(s));
     }
+    
+    private void clear(){
+        txtName.setText("");
+        txtAge.setText("");
+        txtDepartment.setText("");
+        txtEmail.setText("");
+        txtEmployeeID.setText("");
+        txtGender.setText("");
+        txtLevel.setText("");
+        txtMobile.setText("");
+        txtName.setText("");
+        txtStartDate.setText("");
+        txtSupervisor.setText("");
+        txtTitle.setText("");
+        lblImage.setIcon(null);
+    }
+    
 }

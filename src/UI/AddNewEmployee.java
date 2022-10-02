@@ -253,6 +253,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
         txtSupervisor.setText("");
         txtTitle.setText("");
         lblImage.setIcon(null);
+        buttonGroup1.clearSelection();
         }
         }  
 
@@ -293,9 +294,9 @@ public class AddNewEmployee extends javax.swing.JPanel {
         // TODO add your handling code here:
         char c  = evt.getKeyChar();
         if(Character.isDigit(c)||c==KeyEvent.VK_BACK_SPACE){
-            txtEmployeeID.setEditable(true);
+            txtAge.setEditable(true);
         }else{
-            txtEmployeeID.setEditable(false);            
+            txtAge.setEditable(false);            
         }
     }//GEN-LAST:event_txtAgeKeyPressed
 
@@ -343,5 +344,4 @@ public class AddNewEmployee extends javax.swing.JPanel {
         }
         return null;
     } 
-
 }
