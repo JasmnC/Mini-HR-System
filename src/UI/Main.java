@@ -24,7 +24,7 @@ public class Main extends javax.swing.JFrame {
     
     public Main() {
         initComponents();
-        setSize(900, 700);
+        setSize(800, 650);
         employeeDirectory = new EmployeeDirectory();
 
     }

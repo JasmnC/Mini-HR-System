@@ -192,7 +192,7 @@ public class AddNewEmployee extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
         add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 160, 190));
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 190, 30));
         add(txtDepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 190, 30));
